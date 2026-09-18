@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>猜數字遊戲</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background-color: #ffd6e7;
+    }
+
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    input {
+      font-size: 18px;
+      padding: 8px;
+      width: 120px;
+      text-align: center;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 8px 14px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>猜數字遊戲</h1>
+
+    <p>猜一個 1 到 10 的數字：</p>
+
+    <input id="guess" type="number" min="1" max="10">
+
+    <button onclick="checkGuess()">猜！</button>
+
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const secret = 7;
+
+    function checkGuess() {
+      const input = document.getElementById("guess").value;
+      const result = document.getElementById("result");
+
+      if (input === "") {
+        result.textContent = "請先輸入數字！";
+        return;
+      }
+
+      const guess = Number(input);
+
+      if (guess === secret) {
+        result.textContent = "答對了！";
+      } else if (guess < secret) {
+        result.textContent = "太小了！";
+      } else {
+        result.textContent = "太大了！";
+      }
+    }
+  </script>
+
+</body>
+</html>
